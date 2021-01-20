@@ -30,7 +30,6 @@ struct HomeView: View {
         }.accentColor( .primary)
         
     }
-    //CategoryView(category: categories.first!.key.uppercased(), drinks: categories.first!.value)
 }
 
 struct HomeView_Previews: PreviewProvider {
@@ -39,8 +38,3 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
-
-
-//ForEach(categories.keys.sorted(), id: \String.self) { category in
-//    CategoryView(category: "\(category) Drinks".uppercased(), drinks: categories[category]!)
-//}
