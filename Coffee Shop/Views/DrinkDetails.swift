@@ -13,43 +13,44 @@ struct DrinkDetails: View {
     
     var body: some View {
         
-        List() {
-            ZStack(alignment: .bottom) {
-                Image(drink.imageName)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                Rectangle()
-                    .colorInvert()
-                    .frame(height: 70)
-                    .opacity(0.15)
-                    .blur(radius: 2)
-                HStack{
-                    VStack (alignment: .leading) {
-                        Text(drink.name)
-                            .foregroundColor(.white)
-                            .font(.largeTitle)
-                        
+        ScrollView(showsIndicators: false) {
+            LazyVStack(alignment: .leading) {
+                ZStack(alignment: .bottom) {
+                    Image(drink.imageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    Rectangle()
+                        .colorInvert()
+                        .frame(height: 70)
+                        .opacity(0.15)
+                        .blur(radius: 2)
+                    HStack{
+                        VStack (alignment: .leading) {
+                            Text(drink.name)
+                                .foregroundColor(.white)
+                                .font(.largeTitle)
+                            
+                        }
+                        .padding()
+                        Spacer()
                     }
+                }
+                .listRowInsets(EdgeInsets())
+                Text(drink.description)
+                    .font(.body)
+                    .lineSpacing(6)
                     .padding()
+                
+                HStack {
+                    Spacer()
+                    OrderButton()
                     Spacer()
                 }
+                .padding(.vertical, 10)
+                
             }
-            .listRowInsets(EdgeInsets())
-            Text(drink.description)
-                .font(.body)
-                .lineSpacing(6)
-                .padding(.vertical)
-            
-            HStack {
-                Spacer()
-                OrderButton()
-                Spacer()
-            }
-            
-            .padding(.vertical, 30)
-            
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -60,11 +61,11 @@ struct OrderButton : View{
         Button(action:{}){
             Text("Order Now")
         }
-        .frame(width:200,height:50)
+        .frame(width:180,height:40)
         .foregroundColor(.white)
         .font(.title3)
         .background(Color.blue)
-        .cornerRadius(24)
+        .cornerRadius(20)
         .buttonStyle(PlainButtonStyle())
     }
 }
